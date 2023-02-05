@@ -14,6 +14,11 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use('/recaptcha', recaptcha_route_1.default);
+app.get('/', (req, res) => {
+    res.send(`<h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
+                <p><b>Use this endpoint for verifing:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
+                   `);
+});
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

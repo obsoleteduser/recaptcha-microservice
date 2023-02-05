@@ -28,14 +28,14 @@ class RecaptchaController {
             try {
                 const result = yield this.recaptchaService.verifyRecaptcha(recaptcha);
                 if (result.success) {
-                    res.status(200).send({ message: 'Recaptcha verification successful' });
+                    res.status(200).json({ message: 'Recaptcha verification successful', success: true });
                 }
                 else {
-                    res.status(400).send({ message: 'Recaptcha verification failed' });
+                    res.status(400).json({ message: 'Recaptcha verification failed', success: false });
                 }
             }
             catch (error) {
-                res.status(500).send({ message: 'Internal server error' });
+                res.status(500).json({ message: 'Internal server error' });
             }
         });
     }
