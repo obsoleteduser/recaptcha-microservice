@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use('/recaptcha', RecaptchaRoute);
 app.get('/', (req: Request, res: Response)=>{
-      res.send(`<h1>Welcome to reCAPTCHA verification API!</h1>
-                <p>Use this endpoint for verifing: https://validation-microservice.onrender.com/recaptcha/verify</p>
+      res.send(`<h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
+                <p><b>Use this endpoint for verifing:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
                    `)
 })
 
