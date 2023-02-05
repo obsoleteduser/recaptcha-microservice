@@ -17,13 +17,10 @@ const axios_1 = __importDefault(require("axios"));
 class RecaptchaService {
     constructor() {
         this.verifyRecaptcha = (recaptcha) => __awaiter(this, void 0, void 0, function* () {
-            const { response, secret, verificationURL } = recaptcha;
+            const { response, secret, remoteip, verificationURL } = recaptcha;
             try {
                 console.log(recaptcha);
-                const result = yield axios_1.default.post(verificationURL, {
-                    response,
-                    secret
-                });
+                const result = yield axios_1.default.post(`${verificationURL}?secret=${secret}&response=${response}`);
                 return result.data;
             }
             catch (error) {

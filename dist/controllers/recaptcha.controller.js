@@ -14,17 +14,16 @@ const recaptcha_service_1 = require("../services/recaptcha.service");
 class RecaptchaController {
     constructor() {
         this.recaptchaService = new recaptcha_service_1.RecaptchaService();
-    }
-    verify(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const secret = process.env.RECAPTCHA_SECRET;
-            const { response } = req.body;
+        this.verify = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const response = req.body['g-recaptcha-response'];
             const verificationURL = process.env.RECAPTCHA_VERIFICATION_URL;
+            const secret = process.env.RECAPTCHA_SECRET;
             console.log(response);
             const recaptcha = {
                 response,
                 secret,
-                verificationURL
+                verificationURL,
+                remoteip: req.connection.remoteAddress
             };
             try {
                 const result = yield this.recaptchaService.verifyRecaptcha(recaptcha);
