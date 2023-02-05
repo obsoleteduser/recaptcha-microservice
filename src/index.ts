@@ -12,8 +12,6 @@ const app = express();
 app.use(cors<Request>())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
-
-
 app.use('/recaptcha', RecaptchaRoute);
 
 app.listen(port, () => {

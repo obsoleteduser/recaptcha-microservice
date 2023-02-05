@@ -13,7 +13,8 @@ export class RecaptchaController {
     const recaptcha = {
       response,
       secret,
-      verificationURL
+      verificationURL,
+      remoteip: req.connection.remoteAddress
     };
     try {
       const result = await this.recaptchaService.verifyRecaptcha(recaptcha);
