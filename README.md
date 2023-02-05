@@ -4,3 +4,5 @@
 # This is a fully public project with the public keys and other .env variables for testing purposes
 # Home Page
 https://validation-microservice.onrender.com
+# Clinet side key:
+6LcLWlQkAAAAAGGhFyk-RueqPwr4haYD1c8eWpmW
