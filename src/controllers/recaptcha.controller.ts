@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { RECAPTCHA_VERIFICATION_URL } from  '../config/env';
+import { RECAPTCHA_SECRET_KEY, RECAPTCHA_VERIFICATION_URL } from  '../config/env';
 import { RecaptchaService } from '../services/recaptcha.service';
 
 
@@ -9,7 +9,7 @@ export class RecaptchaController {
    verify = async (req: Request, res: Response): Promise<void> =>{
     const response = req.body['g-recaptcha-response'];
     const verificationURL = RECAPTCHA_VERIFICATION_URL;
-    const secret = process.env.RECAPTCHA_SECRET
+    const secret = RECAPTCHA_SECRET_KEY
     console.log(response)
     const recaptcha = {
       response,
