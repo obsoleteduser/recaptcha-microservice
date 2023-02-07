@@ -10,8 +10,7 @@ const accessLogStream = fs_1.default.createWriteStream(path_1.default.join(__dir
 const logger = (req, res, next) => {
     let clientIp = req.headers['x-forwarded-for'];
     const geop = geoip_lite_1.default.lookup(`${clientIp}`.split(',')[0]);
-    console.log(geoip_lite_1.default.lookup('35.230.106.76'));
-    const log = `${new Date().toISOString()} ${req.method} ${req.url} GEO: ${geop === null || geop === void 0 ? void 0 : geop.country} IP: ${clientIp}`;
+    const log = `${new Date().toISOString()} ${req.method} ${req.url} Country: ${geop === null || geop === void 0 ? void 0 : geop.country} City: ${geop === null || geop === void 0 ? void 0 : geop.city} IP: ${clientIp}`;
     console.log(log);
     accessLogStream.write(`${log}\n`);
     next();
