@@ -13,7 +13,7 @@ dotenv.config();
 
 const app = express();
 app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', 'views')
 app.use(cors<Request>())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
