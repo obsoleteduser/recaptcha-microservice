@@ -9,7 +9,7 @@ const geoip_lite_1 = __importDefault(require("geoip-lite"));
 const accessLogStream = fs_1.default.createWriteStream(path_1.default.join(__dirname, 'access.log'), { flags: 'a' });
 const logger = (req, res, next) => {
     let clientIp = req.headers['x-forwarded-for'];
-    const geop = geoip_lite_1.default.lookup(String(clientIp));
+    const geop = geoip_lite_1.default.lookup(clientIp[0]);
     const log = `${new Date().toISOString()} ${req.method} ${req.url} GEO: ${geop} IP: ${clientIp}`;
     console.log(log);
     accessLogStream.write(`${log}\n`);
