@@ -2,6 +2,7 @@ import express, {Request, Response, NextFunction} from 'express'
 import fs from 'fs'
 import path from 'path'
 import geoip from 'geoip-lite'
+import logModel from '../models/log.model'
 
 
 
@@ -12,6 +13,9 @@ const logger = (req: Request, res: Response, next: NextFunction)=>{
     const geop = geoip.lookup(`${clientIp}`.split(',')[0])
     const log = `${new Date().toISOString()} ${req.method} ${req.url} Country: ${geop?.country} City: ${geop?.city} IP: ${clientIp}`
     console.log(log)
+    logModel.create({
+        log
+    })
     accessLogStream.write(`${log}\n`)
     next()
 }

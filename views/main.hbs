@@ -8,9 +8,33 @@
     <title>{{title}}</title>
 </head>
 
+<style>
+    #logs{
+        padding: 1rem;
+        background-color: black;
+        color: white;
+    }
+</style>
+
 <body>
     <h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
     <p><b>Use this endpoint for verifying:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
+    <p>Logs</p>
+    <div id="logs"></div>
 </body>
+
+<script>
+
+    const logElement = document.getElementById('logs')
+
+    fetch('/api/logs')
+    .then(response => response.json())
+    .then(data => {
+        data.logs.map(log => {
+            logElement.innerHTML +=`<p>${log.log}</p>`
+        })
+    })
+
+</script>
 
 </html>
