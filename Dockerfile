@@ -1,9 +1,9 @@
 FROM node:18 as build
 WORKDIR /app
-COPY ./recaptcha-microservice/package.json .
-COPY ./recaptcha-microservice/tsconfig.json .
+COPY ./package.json .
+COPY ./tsconfig.json .
 RUN yarn install
-COPY ./recaptcha-microservice/src .
+COPY ./src .
 RUN yarn build
 FROM node:18
 WORKDIR /app
