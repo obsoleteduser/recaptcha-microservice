@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18 as build
 WORKDIR /recaptcha-microservice
 COPY package*.json ./
 COPY . .
