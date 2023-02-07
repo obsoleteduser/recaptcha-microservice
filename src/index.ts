@@ -5,20 +5,26 @@ import cors from 'cors'
 import bodyParser from 'body-parser';
 import { PORT } from './config/env';
 import logger from './middleware/logger';
+import path from 'path'
+import hbs from 'hbs'
 
 dotenv.config();
 
 
 const app = express();
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, 'views'))
 app.use(cors<Request>())
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 app.use('/recaptcha', RecaptchaRoute);
 app.use(logger)
+
 app.get('/', (req: Request, res: Response)=>{
-      res.send(`<h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
-                <p><b>Use this endpoint for verifying:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
-                   `)
+      // res.send(`<h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
+      //           <p><b>Use this endpoint for verifying:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
+      //              `)
+      res.render('main', {title: 'API'})
 })
 
 app.listen(PORT, () => {
