@@ -10,14 +10,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecaptchaController = void 0;
+const env_1 = require("../config/env");
 const recaptcha_service_1 = require("../services/recaptcha.service");
 class RecaptchaController {
     constructor() {
         this.recaptchaService = new recaptcha_service_1.RecaptchaService();
         this.verify = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const response = req.body['g-recaptcha-response'];
-            const verificationURL = process.env.RECAPTCHA_VERIFICATION_URL;
-            const secret = process.env.RECAPTCHA_SECRET;
+            const verificationURL = env_1.RECAPTCHA_VERIFICATION_URL;
+            const secret = env_1.RECAPTCHA_SECRET_KEY;
             console.log(response);
             const recaptcha = {
                 response,
