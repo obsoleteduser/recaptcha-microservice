@@ -12,4 +12,6 @@ RUN npx tsc --project ./tsconfig.json
 FROM node:18.13.0
 WORKDIR /app
 COPY --from=build /app/dist /app
+COPY ./package.json .
+RUN yarn install --production
 CMD [ "yarn", "start" ]
