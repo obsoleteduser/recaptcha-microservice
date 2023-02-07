@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RecaptchaController = void 0;
+const __1 = require("../");
 const env_1 = require("../config/env");
 const recaptcha_service_1 = require("../services/recaptcha.service");
 class RecaptchaController {
@@ -30,13 +31,16 @@ class RecaptchaController {
                 const result = yield this.recaptchaService.verifyRecaptcha(recaptcha);
                 if (result.success) {
                     res.status(200).json({ message: 'Recaptcha verification successful', success: true });
+                    __1.io.emit('status', { code: "Verified!" });
                 }
                 else {
                     res.status(400).json({ message: 'Recaptcha verification failed', success: false });
+                    __1.io.emit('status', { code: "Failed!" });
                 }
             }
             catch (error) {
                 res.status(500).json({ message: 'Internal server error' });
+                __1.io.emit('status', { code: "Server error!" });
             }
         });
     }

@@ -9,11 +9,14 @@ import path from 'path'
 import hbs from 'hbs'
 import { connectToDb } from './config/dbConnection';
 import logRouter from './routes/logs.route';
+import http from 'http'
+import { Server } from 'socket.io'
 
 dotenv.config();
 
-
 const app = express();
+const server = http.createServer(app)
+export const io = new Server(server)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 app.use(cors<Request>())
@@ -29,7 +32,7 @@ app.get('/', (req: Request, res: Response) => {
 
 const start = async () => {
   await connectToDb()
-  app.listen(PORT, () => {
+  server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
 

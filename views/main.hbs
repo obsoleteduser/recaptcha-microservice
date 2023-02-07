@@ -5,24 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js" integrity="sha512-rwu37NnL8piEGiFhe2c5j4GahN+gFsIn9k/0hkRY44iz0pc81tBNaUN56qF8X4fy+5pgAAgYi2C9FXdetne5sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>{{title}}</title>
 </head>
 
 <style>
+    *{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
     #logs{
         padding: 1rem;
         background-color: black;
         color: white;
+        overflow-y: scroll;
+        max-height: 65vh;
+    }
+    #status{
+        padding: 1rem;
+        margin: 1rem;
+        color: white;
+        border-radius: 10px;
     }
 </style>
 
 <body>
     <h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
     <p><b>Use this endpoint for verifying:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
+    <div id="status"></div>
     <div id="logs"></div>
 </body>
 
 <script>
+    const statusCode = document.getElementById('status')
+    const socket = io('/')
+    socket.on('status', (status)=>{
+        if(status.code==='success'){
+            statusCode.style.backgroundColor='green'
+            statusCode.innerHTML = status.code
+        }
+        else{
+            statusCode.style.backgroundColor='red'
+            statusCode.innerHTML = status.code
+        }
+    })
 
     const logElement = document.getElementById('logs')
 
