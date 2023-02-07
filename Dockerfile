@@ -1,6 +1,5 @@
 FROM node:18 as build
 WORKDIR /recaptcha-microservice
-COPY package*.json ./
 COPY . .
 RUN yarn install
 RUN yarn build
