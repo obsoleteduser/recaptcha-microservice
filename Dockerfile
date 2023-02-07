@@ -1,6 +1,10 @@
 FROM node:18
 WORKDIR /recaptcha-microservice
 COPY package*.json ./
-RUN yarn install
 COPY . .
+RUN yarn install
+RUN yarn build
+FROM node:18
+WORKDIR /recaptcha-microservice
+COPY --from=build /recaptcha-microservice/dist /recaptcha-microservice
 CMD [ "yarn", "start" ]
