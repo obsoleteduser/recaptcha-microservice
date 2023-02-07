@@ -50,3 +50,6 @@
 2023-02-07T17:31:37.087Z GET / GEO: null IP: ::ffff:127.0.0.1
 2023-02-07T17:32:25.711Z GET / GEO: null IP: ::ffff:127.0.0.1
 2023-02-07T17:32:26.119Z GET /favicon.ico GEO: null IP: ::ffff:127.0.0.1
+2023-02-07T18:10:42.316Z GET / GEO: null IP: undefined
+2023-02-07T18:12:07.001Z GET / GEO: null IP: undefined
+2023-02-07T18:13:51.003Z GET / GEO: undefined IP: undefined
