@@ -29,6 +29,7 @@
     fetch('/api/logs')
     .then(response => response.json())
     .then(data => {
+        logElement.innerHTML = ''
         data.logs.map(log => {
             logElement.innerHTML +=`<p>${log.log}</p>`
         })
