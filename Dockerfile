@@ -1,7 +1,8 @@
-FROM node:18 as build
+FROM node:18:alpine as build
 WORKDIR /app
 COPY ./package.json .
 COPY ./tsconfig.json .
+COPY ./yarn.lock .
 COPY ./views .
 COPY ./.env .
 RUN yarn install
