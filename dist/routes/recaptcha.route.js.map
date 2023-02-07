@@ -1,0 +1,1 @@
+{"version":3,"file":"recaptcha.route.js","sourceRoot":"","sources":["../../src/routes/recaptcha.route.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AACjC,8EAA0E;AAE1E,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AACxB,MAAM,mBAAmB,GAAG,IAAI,0CAAmB,EAAE,CAAC;AAEtD,MAAM,CAAC,IAAI,CAAC,SAAS,EAAE,mBAAmB,CAAC,MAAM,CAAC,CAAC;AAEnD,kBAAe,MAAM,CAAC"}
