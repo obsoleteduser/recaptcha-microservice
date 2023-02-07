@@ -5,7 +5,7 @@ import path from 'path'
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
 
 const logger = (req: Request, res: Response, next: NextFunction)=>{
-    const log = `${new Date().toISOString()} ${req.method} ${req.url} IP: ${req.headers['forwarded-for'] || req.connection.remoteAddress}`
+    const log = `${new Date().toISOString()} ${req.method} ${req.url} IP: ${req.headers['x-forwarded-for'] || req.connection.remoteAddress}`
     console.log(log, )
     accessLogStream.write(`${log}\n`)
     next()
