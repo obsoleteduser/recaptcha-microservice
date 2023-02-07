@@ -21,10 +21,7 @@ app.use('/recaptcha', RecaptchaRoute);
 app.use(logger)
 
 app.get('/', (req: Request, res: Response)=>{
-      // res.send(`<h1>Welcome to Tahir's reCAPTCHA verification API!</h1>
-      //           <p><b>Use this endpoint for verifying:</b> https://validation-microservice.onrender.com/recaptcha/verify</p>
-      //              `)
-      res.render('main', {title: 'API'})
+      res.render('main', {title: 'reCAPTCHA Microservice'})
 })
 
 app.listen(PORT, () => {
