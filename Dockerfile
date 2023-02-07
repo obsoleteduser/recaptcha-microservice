@@ -5,7 +5,7 @@ COPY ./tsconfig.json .
 COPY ./yarn.lock .
 COPY ./.env .
 RUN yarn install
-RUN yarn add typescript
+RUN yarn global add typescript
 COPY ./src .
 COPY ./views .
 RUN npx tsc --project ./tsconfig.json
