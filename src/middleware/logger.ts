@@ -9,7 +9,6 @@ const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'),
 
 const logger = (req: Request, res: Response, next: NextFunction)=>{
     let clientIp = req.headers['x-forwarded-for']
-    clientIp = String(clientIp).split(',')[0].trim()
     const geop = geoip.lookup(String(clientIp))
     const log = `${new Date().toISOString()} ${req.method} ${req.url} GEO: ${geop} IP: ${clientIp}`
     console.log(log)
