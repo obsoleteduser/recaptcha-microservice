@@ -8,7 +8,8 @@ const path_1 = __importDefault(require("path"));
 const geoip_lite_1 = __importDefault(require("geoip-lite"));
 const accessLogStream = fs_1.default.createWriteStream(path_1.default.join(__dirname, 'access.log'), { flags: 'a' });
 const logger = (req, res, next) => {
-    const clientIp = String(req.headers['x-forwarded-for'] || req.connection.remoteAddress).split(',')[0];
+    console.log('This is:', req.connection.remoteAddress);
+    const clientIp = String(req.connection.remoteAddress);
     const geop = geoip_lite_1.default.lookup(String(clientIp));
     const log = `${new Date().toISOString()} ${req.method} ${req.url} GEO: ${geop} IP: ${clientIp}`;
     console.log(log);
