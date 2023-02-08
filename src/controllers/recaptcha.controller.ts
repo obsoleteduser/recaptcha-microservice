@@ -1,8 +1,8 @@
+import { config } from 'dotenv';
 import { Request, Response } from 'express';
 import { io } from '../';
 import { RECAPTCHA_SECRET_KEY, RECAPTCHA_VERIFICATION_URL } from  '../config/env';
 import { RecaptchaService } from '../services/recaptcha.service';
-
 
 export class RecaptchaController {
   private recaptchaService = new RecaptchaService();

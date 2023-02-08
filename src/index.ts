@@ -15,17 +15,17 @@ import { Server } from 'socket.io'
 dotenv.config();
 
 const app = express();
-const server = http.createServer(app)
-export const io = new Server(server)
-app.set('view engine', 'hbs')
-app.set('views', 'views')
-app.use(cors<Request>())
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
+app.use(cors<Request>())
+app.set('view engine', 'hbs')
+app.set('views', 'views')
 app.use('/recaptcha', RecaptchaRoute);
 app.use('/api', logRouter)
 app.use(logger)
-
+const server = http.createServer(app)
+export const io = new Server(server)
 app.get('/', (req: Request, res: Response) => {
   res.render('main', { title: 'reCAPTCHA Microservice' })
 })
