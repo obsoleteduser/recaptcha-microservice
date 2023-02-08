@@ -39,7 +39,7 @@
     const statusCode = document.getElementById('status')
     const socket = io('/')
     socket.on('status', (status)=>{
-        if(status.code==='success'){
+        if(status.code==='Verified!'){
             statusCode.style.backgroundColor='green'
             statusCode.innerHTML = status.code
         }
